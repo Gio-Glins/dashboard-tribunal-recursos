@@ -36,7 +36,7 @@ with col2:
     st.markdown(html_title, unsafe_allow_html=True)
 
 # Carregar dados
-df = pd.read_excel("PROCESSOS_TRA_LIMPA.xlsx")
+df = pd.read_excel("PROCESSOS_TRA_LIMPA (1).xlsx")
 
 # Criar coluna formatada com nome de mês em português
 df["dia"] = df["data_plenaria"].dt.day
