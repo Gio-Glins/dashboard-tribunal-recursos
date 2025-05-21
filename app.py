@@ -19,21 +19,10 @@ st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allo
 image = Image.open('logo_semas.png')
 
 # Título com logo
-col1, col2 = st.columns([0.9, 0.1])
+col1= st.column
 with col1:
     st.image(image)
 
-html_title = """
-    <style>
-    .title-test {
-    font-weight:bold;
-    padding:5px;
-    border-radius:6px;
-    }
-    </style>
-    <center><h1 class="title-test">Planilha Tribunal de Recursos Administrativos</h1></center>"""
-with col2:
-    st.markdown(html_title, unsafe_allow_html=True)
 
 # Carregar dados
 df = pd.read_excel("PROCESSOS_TRA_LIMPA (1).xlsx")
