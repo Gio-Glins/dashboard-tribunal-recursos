@@ -62,6 +62,7 @@ fig1 = px.line(
     y="valor_da_multa",
     title="Valor Arrecadado por Data da Plenária (R$)",
     template="gridon",
+    height=500,
     labels={"data_plenaria_formatada": "Data da Plenária", "valor_da_multa": "Valor da Multa (R$)"}
 )
 
