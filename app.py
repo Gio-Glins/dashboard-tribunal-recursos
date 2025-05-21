@@ -43,6 +43,8 @@ with col12:
 # Carregar dados
 df = pd.read_excel("PROCESSOS_TRA_LIMPA (1).xlsx")
 df["valor_da_multa"] = pd.to_numeric(df["valor_da_multa"], errors="coerce")
+df["data_plenaria"] = pd.to_datetime(df["data_plenaria"], errors="coerce", dayfirst=True)
+
 
 
 # Criar coluna formatada com nome de mês em português
