@@ -49,7 +49,11 @@ df["valor_da_multa"] = pd.to_numeric(df["valor_da_multa"], errors="coerce")
 df["dia"] = df["data_plenaria"].dt.day
 df["mes"] = df["data_plenaria"].dt.month
 df["ano"] = df["data_plenaria"].dt.year
+# Criar coluna formatada em português para exibição
 df["data_plenaria_formatada"] = df["dia"].astype(str) + " " + df["mes"].map(nomes_meses_pt) + " " + df["ano"].astype(str)
+
+# Ordenar os dados por data real (mantendo a data formatada para mostrar)
+df = df.sort_values("data_plenaria")
 
 # ======================= GRÁFICOS =======================
 
