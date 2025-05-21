@@ -53,27 +53,11 @@ with col4:
 
 # 2. Valor Arrecadado por Plenária
 with col5:
-    result_valores = df.groupby("data_plenaria_formatada")["valor_da_multa"].sum().reset_index()
-
-# Cria o gráfico de linha com valores formatados em reais
-fig1 = px.line(
-    result_valores,
-    x="data_plenaria_formatada",
-    y="valor_da_multa",
-    title="Valor Arrecadado por Data da Plenária (R$)",
-    template="gridon",
-    height=500,
-    labels={"data_plenaria_formatada": "Data da Plenária", "valor_da_multa": "Valor da Multa (R$)"}
-)
-
-# Formata o eixo Y como moeda brasileira
-fig1.update_layout(
-    yaxis_tickprefix="R$ ",
-    yaxis_tickformat=",.2f"
-)
-
-# Exibe o gráfico no Streamlit
-st.plotly_chart(fig1, use_container_width=True)
+ result_valores = df.groupby("data_plenaria_formatada")["valor_da_multa"].sum().reset_index()
+    fig1 = px.line(result_valores, x="data_plenaria_formatada", y="valor_da_multa",
+                   title="Valor Arrecadado por Data da Plenária (R$)", template="gridon")
+    fig1.update_xaxes(title="Data da Plenária")
+    st.plotly_chart(fig1, use_container_width=True)
 
 # Visualizar dados
 st.divider()
