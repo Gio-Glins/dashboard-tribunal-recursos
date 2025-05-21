@@ -56,11 +56,11 @@ with col5:
     result_valores = df.groupby("data_plenaria_formatada")["valor_da_multa"].sum().reset_index()
     fig1 = px.line(result_valores, x="data_plenaria_formatada", y="valor_da_multa",
                    title="Valor Arrecadado por Data da Plenária (R$)", template="gridon")
-    fig1.update_xaxes(title="Data da Plenária")
-    st.plotly_chart(fig1, use_container_width=True)
+    fig1.update_xaxes(title="Data da Plenária")    
     fig1.update_layout(
     yaxis_tickprefix="R$ ",
     yaxis_tickformat=",.2f")
+    st.plotly_chart(fig1, use_container_width=True)
 
 # Visualizar dados
 st.divider()
