@@ -30,11 +30,13 @@ with col2:
 col11, col12, col13 = st.columns([1, 2, 1])
 html_title = """
     <style>
-@@ -31,12 +31,14 @@
+    .title-test {
+    font-weight:bold;
+    padding:5px;
     border-radius:6px;
     }
     </style>
-    <center><h1 class="title-test">Planilha do Tribunal de Recursos Administrativos</h1></center>"""
+    <center><h1 class="title-test">Planilha Tribunal de Recursos Administrativos</h1></center>"""
 with col12:
     st.markdown(html_title, unsafe_allow_html=True)
     
