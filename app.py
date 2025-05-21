@@ -19,9 +19,11 @@ st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allo
 image = Image.open('logo_semas.png')
 
 # Título com logo
-col1= st.column
-with col1:
-    st.image(image)
+col1, col2, col3 = st.columns([1, 2, 1])  
+# col2 maior = centraliza
+
+with col2:
+    st.image(image, use_column_width=True)
 
 
 # Carregar dados
