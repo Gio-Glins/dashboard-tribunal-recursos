@@ -18,13 +18,15 @@ st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allo
 # Carregar imagem do logo
 image = Image.open('logo_semas.png')
 
-# Título com logo
-col1, col2, col3 = st.columns([1, 2, 1])  
-# col2 maior = centraliza
+# Espaço antes da imagem
+st.markdown("<div style='padding-top: 30px;'></div>", unsafe_allow_html=True)
+
+# Centralização com colunas
+col1, col2, col3 = st.columns([1, 2, 1])
+image = Image.open('logo_semas.png')
 
 with col2:
     st.image(image, use_column_width=True)
-
 
 # Carregar dados
 df = pd.read_excel("PROCESSOS_TRA_LIMPA (1).xlsx")
