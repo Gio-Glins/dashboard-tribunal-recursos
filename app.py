@@ -27,7 +27,17 @@ image = Image.open('logo_semas.png')
 
 with col2:
     st.image(image, use_column_width=True)
-
+col11, col12, col13 = st.columns([1, 2, 1])
+html_title = """
+    <style>
+@@ -31,12 +31,14 @@
+    border-radius:6px;
+    }
+    </style>
+    <center><h1 class="title-test">Planilha do Tribunal de Recursos Administrativos</h1></center>"""
+with col12:
+    st.markdown(html_title, unsafe_allow_html=True)
+    
 # Carregar dados
 df = pd.read_excel("PROCESSOS_TRA_LIMPA (1).xlsx")
 df["valor_da_multa"] = pd.to_numeric(df["valor_da_multa"], errors="coerce")
