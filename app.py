@@ -60,7 +60,7 @@ with col4:
 
 # 2. Valor Arrecadado por Plenária
 with col5:
-result_valores = df.groupby("data_plenaria_formatada")["valor_da_multa"].sum().reset_index()
+    result_valores = df.groupby("data_plenaria_formatada")["valor_da_multa"].sum().reset_index()
 
 # Cria o gráfico de linha com valores formatados em reais
 fig1 = px.line(
