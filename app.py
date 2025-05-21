@@ -58,6 +58,10 @@ with col5:
                    title="Valor Arrecadado por Data da Plenária (R$)", template="gridon")
     fig1.update_xaxes(title="Data da Plenária")
     st.plotly_chart(fig1, use_container_width=True)
+    fig1.update_layout(
+    yaxis_tickprefix="R$ ",
+    yaxis_tickformat=",.2f")
+
 # Visualizar dados
 st.divider()
 col_v1, col_d1 = st.columns([0.5, 0.5])
