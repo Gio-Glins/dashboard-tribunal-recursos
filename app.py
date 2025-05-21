@@ -16,12 +16,12 @@ st.set_page_config(layout="wide")
 st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True)
 
 # Carregar imagem do logo
-image = Image.open('logo-semas.jpg')
+image = Image.open('logo_semas.png')
 
 # Título com logo
-col1, col2 = st.columns([0.1, 0.9])
+col1, col2 = st.columns([0.9, 0.1])
 with col1:
-    st.image(image, width=20)
+    st.image(image)
 
 html_title = """
     <style>
@@ -31,12 +31,14 @@ html_title = """
     border-radius:6px;
     }
     </style>
-    <center><h1 class="title-test">Planilha: Tribunal de Recursos Administrativos</h1></center>"""
+    <center><h1 class="title-test">Planilha Tribunal de Recursos Administrativos</h1></center>"""
 with col2:
     st.markdown(html_title, unsafe_allow_html=True)
 
 # Carregar dados
 df = pd.read_excel("PROCESSOS_TRA_LIMPA (1).xlsx")
+df["valor_da_multa"] = pd.to_numeric(df["valor_da_multa"], errors="coerce")
+
 
 # Criar coluna formatada com nome de mês em português
 df["dia"] = df["data_plenaria"].dt.day
@@ -58,11 +60,26 @@ with col4:
 
 # 2. Valor Arrecadado por Plenária
 with col5:
-    result_valores = df.groupby("data_plenaria_formatada")["valor_da_multa"].sum().reset_index()
-    fig1 = px.line(result_valores, x="data_plenaria_formatada", y="valor_da_multa",
-                   title="Valor Arrecadado por Data da Plenária (R$)", template="gridon")
-    fig1.update_xaxes(title="Data da Plenária")
-    st.plotly_chart(fig1, use_container_width=True)
+result_valores = df.groupby("data_plenaria_formatada")["valor_da_multa"].sum().reset_index()
+
+# Cria o gráfico de linha com valores formatados em reais
+fig1 = px.line(
+    result_valores,
+    x="data_plenaria_formatada",
+    y="valor_da_multa",
+    title="Valor Arrecadado por Data da Plenária (R$)",
+    template="gridon",
+    labels={"data_plenaria_formatada": "Data da Plenária", "valor_da_multa": "Valor da Multa (R$)"}
+)
+
+# Formata o eixo Y como moeda brasileira
+fig1.update_layout(
+    yaxis_tickprefix="R$ ",
+    yaxis_tickformat=",.2f"
+)
+
+# Exibe o gráfico no Streamlit
+st.plotly_chart(fig1, use_container_width=True)
 
 # Visualizar dados
 st.divider()
