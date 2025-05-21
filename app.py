@@ -53,12 +53,11 @@ with col4:
 
 # 2. Valor Arrecadado por Plenária
 with col5:
- result_valores = df.groupby("data_plenaria_formatada")["valor_da_multa"].sum().reset_index()
+    result_valores = df.groupby("data_plenaria_formatada")["valor_da_multa"].sum().reset_index()
     fig1 = px.line(result_valores, x="data_plenaria_formatada", y="valor_da_multa",
                    title="Valor Arrecadado por Data da Plenária (R$)", template="gridon")
     fig1.update_xaxes(title="Data da Plenária")
     st.plotly_chart(fig1, use_container_width=True)
-
 # Visualizar dados
 st.divider()
 col_v1, col_d1 = st.columns([0.5, 0.5])
