@@ -53,7 +53,7 @@ col4, col5 = st.columns([0.50, 0.50])
 
 # 1. Total de Processos por Data da Plenária
 with col4:
-    result_data = df.groupby("data_plenaria_formatada").size().reset_index(name="Total de Processos")
+    result_data = df.groupby("data_plenaria").size().reset_index(name="Total de Processos")
     fig = px.bar(result_data, x="data_plenaria", y="Total de Processos",
                  title="Total de Processos por Data da Plenária", template="gridon", height=500)
     fig.update_xaxes(title="Data da Plenária")
@@ -61,7 +61,7 @@ with col4:
 
 # 2. Valor Arrecadado por Plenária
 with col5:
-    result_valores = df.groupby("data_plenaria_formatada")["valor_da_multa"].sum().reset_index()
+    result_valores = df.groupby("data_plenaria")["valor_da_multa"].sum().reset_index()
     fig1 = px.line(result_valores, x="data_plenaria", y="valor_da_multa",
                    title="Valor Arrecadado por Data da Plenária (R$)", template="gridon")
     fig1.update_xaxes(title="Data da Plenária")    
