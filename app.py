@@ -4,6 +4,12 @@ from PIL import Image
 import plotly.express as px
 import plotly.graph_objects as go
 
+nomes_meses_pt = { 
+    1: 'janeiro', 2: 'fevereiro', 3: 'março', 4: 'abril',
+    5: 'maio', 6: 'junho', 7: 'julho', 8: 'agosto',
+    9: 'setembro', 10: 'outubro', 11: 'novembro', 12: 'dezembro'
+}
+
 # Configuração inicial do app
 st.set_page_config(layout="wide")
 st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True)
@@ -38,17 +44,20 @@ with col12:
 df = pd.read_excel("PROCESSOS_TRA_LIMPA (1).xlsx")
 df["valor_da_multa"] = pd.to_numeric(df["valor_da_multa"], errors="coerce")
 
+# Separar dia, mês e ano da data da plenária
+df["dia"] = df["data_plenaria"].dt.day
+df["mes"] = df["data_plenaria"].dt.month
+df["ano"] = df["data_plenaria"].dt.year
+
+# Criar coluna formatada em português para exibição
+df["data_plenaria_formatada"] = df["dia"].astype(str) + " " + df["mes"].map(nomes_meses_pt) + " " + df["ano"].astype(str)
+
 # Garantir que está em datetime
 df["data_plenaria"] = pd.to_datetime(df["data_plenaria"], errors="coerce", dayfirst=True)
-
-# Criar coluna no formato "Month Year"
-df["data_plenaria_formatada"] = df["data_plenaria"].dt.strftime("%b %Y")
 
 # Ordenar pelo valor real da data
 df = df.sort_values("data_plenaria")
 
-# Criar coluna formatada depois de ordenar
-df["data_plenaria_formatada"] = df["data_plenaria"].dt.strftime("%d/%m/%Y")
 
 # 4. Garantir que eixo X esteja na ordem correta usando 'category_orders'
 
