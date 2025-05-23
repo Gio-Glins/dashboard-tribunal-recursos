@@ -38,14 +38,7 @@ html_title = """
     </style>
     <center><h1 class="title-test">Planilha Tribunal de Recursos Administrativos</h1></center>"""
 with col12:
-    st.markdown(
-    """
-    <div style='text-align: center; padding-top: 20px;'>
-        <img src='logo_semas.png' width='200'>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+ st.markdown(html_title, unsafe_allow_html=True)
     
 # Carregar dados
 df = pd.read_excel("PROCESSOS_TRA_LIMPA (1).xlsx")
