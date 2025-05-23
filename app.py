@@ -4,10 +4,6 @@ from PIL import Image
 import plotly.express as px
 import plotly.graph_objects as go
 
-
-
-
-
 # Ordenar pelo valor real da data
 df = df.sort_values("data_plenaria")
 # Configuração inicial do app
@@ -24,11 +20,6 @@ st.markdown("<div style='padding-top: 30px;'></div>", unsafe_allow_html=True)
 col1, col2, col3 = st.columns([1, 2, 1])
 image = Image.open('logo_semas.png')
 
-# Garantir que está em datetime
-df["data_plenaria"] = pd.to_datetime(df["data_plenaria"], errors="coerce", dayfirst=True)
-
-# Criar coluna no formato "Month Year" (ex: March 2025)
-df["data_plenaria_formatada"] = df["data_plenaria"].dt.strftime("%B %Y")
 
 with col2:
     st.image(image, use_column_width=True)
@@ -48,6 +39,12 @@ with col12:
 # Carregar dados
 df = pd.read_excel("PROCESSOS_TRA_LIMPA (1).xlsx")
 df["valor_da_multa"] = pd.to_numeric(df["valor_da_multa"], errors="coerce")
+
+# Garantir que está em datetime
+df["data_plenaria"] = pd.to_datetime(df["data_plenaria"], errors="coerce", dayfirst=True)
+
+# Criar coluna no formato "Month Year" (ex: March 2025)
+df["data_plenaria_formatada"] = df["data_plenaria"].dt.strftime("%B %Y")
 
 # ======================= GRÁFICOS =======================
 
