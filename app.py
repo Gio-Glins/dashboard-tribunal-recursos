@@ -54,7 +54,7 @@ col4, col5 = st.columns([0.50, 0.50])
 # 1. Total de Processos por Data da Plenária
 with col4:
     result_data = df.groupby("data_plenaria_formatada").size().reset_index(name="Total de Processos")
-    fig = px.bar(result_data, x="data_plenaria_formatada", y="Total de Processos",
+    fig = px.bar(result_data, x="data_plenaria", y="Total de Processos",
                  title="Total de Processos por Data da Plenária", template="gridon", height=500)
     fig.update_xaxes(title="Data da Plenária")
     st.plotly_chart(fig, use_container_width=True)
@@ -62,7 +62,7 @@ with col4:
 # 2. Valor Arrecadado por Plenária
 with col5:
     result_valores = df.groupby("data_plenaria_formatada")["valor_da_multa"].sum().reset_index()
-    fig1 = px.line(result_valores, x="data_plenaria_formatada", y="valor_da_multa",
+    fig1 = px.line(result_valores, x="data_plenaria", y="valor_da_multa",
                    title="Valor Arrecadado por Data da Plenária (R$)", template="gridon")
     fig1.update_xaxes(title="Data da Plenária")    
     fig1.update_layout(
