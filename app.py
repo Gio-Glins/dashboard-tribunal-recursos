@@ -5,11 +5,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 
-# Garantir que está em datetime
-df["data_plenaria"] = pd.to_datetime(df["data_plenaria"], errors="coerce", dayfirst=True)
 
-# Criar coluna no formato "Month Year" (ex: March 2025)
-df["data_plenaria_formatada"] = df["data_plenaria"].dt.strftime("%B %Y")
 
 
 # Ordenar pelo valor real da data
@@ -27,6 +23,12 @@ st.markdown("<div style='padding-top: 30px;'></div>", unsafe_allow_html=True)
 # Centralização com colunas
 col1, col2, col3 = st.columns([1, 2, 1])
 image = Image.open('logo_semas.png')
+
+# Garantir que está em datetime
+df["data_plenaria"] = pd.to_datetime(df["data_plenaria"], errors="coerce", dayfirst=True)
+
+# Criar coluna no formato "Month Year" (ex: March 2025)
+df["data_plenaria_formatada"] = df["data_plenaria"].dt.strftime("%B %Y")
 
 with col2:
     st.image(image, use_column_width=True)
