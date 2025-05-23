@@ -15,7 +15,7 @@ st.set_page_config(layout="wide")
 st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True)
 
 # Carregar imagem do logo
-image = Image.open('logo_semas.png')
+image = Image.open('logo_semas (1).png')
 
 # Espaço antes da imagem
 st.markdown("<div style='padding-top: 30px;'></div>", unsafe_allow_html=True)
