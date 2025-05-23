@@ -36,7 +36,7 @@ html_title = """
     border-radius:6px;
     }
     </style>
-    <center><h1 class="title-test">Planilha Tribunal de Recursos Administrativos</h1></center>"""
+    <center><h1 class="title-test">Planilha de Processos Julgados</h1></center>"""
 with col12:
  st.markdown(html_title, unsafe_allow_html=True)
     
