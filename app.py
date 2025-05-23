@@ -4,8 +4,6 @@ from PIL import Image
 import plotly.express as px
 import plotly.graph_objects as go
 
-# Ordenar pelo valor real da data
-df = df.sort_values("data_plenaria")
 # Configuração inicial do app
 st.set_page_config(layout="wide")
 st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True)
@@ -45,6 +43,9 @@ df["data_plenaria"] = pd.to_datetime(df["data_plenaria"], errors="coerce", dayfi
 
 # Criar coluna no formato "Month Year" (ex: March 2025)
 df["data_plenaria_formatada"] = df["data_plenaria"].dt.strftime("%B %Y")
+
+# Ordenar pelo valor real da data
+df = df.sort_values("data_plenaria")
 
 # ======================= GRÁFICOS =======================
 
