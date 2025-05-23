@@ -41,8 +41,8 @@ df["valor_da_multa"] = pd.to_numeric(df["valor_da_multa"], errors="coerce")
 # Garantir que está em datetime
 df["data_plenaria"] = pd.to_datetime(df["data_plenaria"], errors="coerce", dayfirst=True)
 
-# Criar coluna no formato "Month Year" (ex: March 2025)
-df["data_plenaria_formatada"] = df["data_plenaria"].dt.strftime("%B %Y")
+# Criar coluna no formato "Month Year"
+df["data_plenaria_formatada"] = df["data_plenaria"].dt.strftime("%b %Y")
 
 # Ordenar pelo valor real da data
 df = df.sort_values("data_plenaria")
