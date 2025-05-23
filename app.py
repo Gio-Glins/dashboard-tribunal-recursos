@@ -73,7 +73,7 @@ with col4:
     fig = px.bar(result_data, x="data_plenaria_formatada", y="Total de Processos",
                  title="Total de Processos por Data da Plenária", template="gridon", height=500)
     fig.update_xaxes(title="Data da Plenária")
-    fig.update_traces(hovertemplate="Total de Processos: %{y}")
+    fig.update_traces(hovertemplate="%{y}")
     ordered_labels = result_data.sort_values("data_plenaria")["data_plenaria_formatada"].tolist()
     st.plotly_chart(fig, use_container_width=True)
 
@@ -86,7 +86,7 @@ with col5:
     fig1.update_layout(
     yaxis_tickprefix="R$ ",
     yaxis_tickformat=",.2f")
-    fig1.update_traces(hovertemplate="Valor Arrecadado: R$ %{y:,.2f}")
+    fig1.update_traces(hovertemplate="R$ %{y:,.2f}")
     ordered_labels_valores = result_valores.sort_values("data_plenaria")["data_plenaria_formatada"].tolist()
 
     st.plotly_chart(fig1, use_container_width=True)
